@@ -26,7 +26,7 @@ const StopwatchPage = (props) => {
                 onStop={props.onStop} 
                 onSave={props.onSave}
                 onReset={props.onReset}
-                isRunning={props.isRunning} 
+                isRunning={props.state.isRunning} 
                 />
                 <PastActivities 
                 userWeight={userWeight} 

@@ -16,8 +16,7 @@ class CalorieStopwatch extends React.Component {
             age: 0,
             sex: 'male',
             height: 0,
-            weight: 50,
-
+            weight: 0,
         },
         currentActivity: {
                 MET: 0,
@@ -43,12 +42,13 @@ class CalorieStopwatch extends React.Component {
              return;
         }; 
 
-        this.setState((prevState) => ({ 
-            isRunning: !prevState.isRunning,
+        this.setState(() => ({ 
+            isRunning: true,
             activityExists: true
             }));
         
         const activity = this.state.currentActivity;
+
         this.timeRef = setInterval(() => {
             activity.time += 100;
             this.setState(() => ({ activity }))
@@ -57,8 +57,8 @@ class CalorieStopwatch extends React.Component {
     };
 
     onStop = () => {
-        this.setState((prevState) => ({ 
-            isRunning: !prevState.isRunning
+        this.setState(() => ({ 
+            isRunning: false
          }))
         clearInterval(this.timeRef);
     };
@@ -70,9 +70,9 @@ class CalorieStopwatch extends React.Component {
                 const pastActivites = [latestActivity, ...this.state.pastActivites];
         
                 this.setState(() => ({
+                    currentActivity: defaultState,
                     pastActivites,
-                    activityExists: false,
-                    currentActivity: defaultState
+                    activityExists: false
                 }));
     };
 
@@ -99,9 +99,10 @@ class CalorieStopwatch extends React.Component {
         const currentActivity = {
             MET: e.target.dataset.met,
             time: 0,
-            name: e.target.dataset.name
+            name: e.target.dataset.name,
+            createdAt: moment()
         }
-        this.setState((prevState) => ({ 
+        this.setState(() => ({ 
             redirect: true,
             activityExists: true,    
             currentActivity
@@ -133,7 +134,7 @@ class CalorieStopwatch extends React.Component {
             pastActivites = [this.state.currentActivity, ...pastActivites];
         };
         
-        this.setState((prevState) => ({
+        this.setState(() => ({
             pastActivites,
             currentActivity,
             activityExists: true
