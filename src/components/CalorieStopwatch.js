@@ -26,36 +26,7 @@ class CalorieStopwatch extends React.Component {
                 id: 0,
                 createdAt: 0
         },
-        pastActivites: [
-            {
-                MET: 6,
-                time: 5353535,
-                name: "Dancing",
-                id: uuid(),
-                createdAt: moment()
-            },
-            {
-                MET: 10,
-                time: 1800000,
-                name: "Running Uphill",
-                id: uuid(),
-                createdAt: moment()
-            },
-            {
-                MET: 11,
-                time: 1806600,
-                name: "I'm from yesterday",
-                id: uuid(),
-                createdAt: moment().subtract(1, 'days')
-            },
-            {
-                MET: 8,
-                time: 1100000,
-                name: "Climbing Trees",
-                id: uuid(),
-                createdAt: moment()
-            }
-        ],
+        pastActivites: [],
         isRunning: false,
         activityExists: false,
         redirect: false
