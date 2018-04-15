@@ -14,7 +14,7 @@ const CaloriesTracker = (props) => {
         <div>
             {
                 errorCheck ? 
-                <p>{name} - Calories burned: {caloriesBurned(cMET, weight, time)}</p>
+                <p>{name} Calories burned: {caloriesBurned(cMET, weight, time)}</p>
                 :
                 <h5>Please create a new timer, or resume an existing one.</h5>
             }

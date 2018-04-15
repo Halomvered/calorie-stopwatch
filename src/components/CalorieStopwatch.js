@@ -27,7 +27,7 @@ class CalorieStopwatch extends React.Component {
         },
         pastActivites: [],
         isRunning: false,
-        activityExists: false,
+        activityExists: true,
         redirect: false
     };
 
