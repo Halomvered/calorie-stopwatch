@@ -22,8 +22,7 @@ const StopwatchPage = (props) => {
                 activityExists={state.activityExists}
                 />
                 <Controls 
-                onStart={props.onStart} 
-                onStop={props.onStop} 
+                onStartStop={props.onStartStop} 
                 onSave={props.onSave}
                 onReset={props.onReset}
                 isRunning={props.state.isRunning} 

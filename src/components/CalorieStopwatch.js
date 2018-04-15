@@ -34,33 +34,34 @@ class CalorieStopwatch extends React.Component {
 
     timeRef = null;
 
-    onStart = () => {
-        if (this.state.currentActivity.MET === 0) {
+    onStartStop = () => {        
+        if (!this.state.isRunning) {
+            if (this.state.currentActivity.MET === 0) {
+                this.setState(() => ({ 
+                    activityExists: false
+                 }));
+                 return;
+            }; 
+    
             this.setState(() => ({ 
-                activityExists: false
-             }));
-             return;
-        }; 
+                isRunning: true,
+                activityExists: true
+                }));
+            
+            const activity = this.state.currentActivity;
+    
+            this.timeRef = setInterval(() => {
+                activity.time += 100;
+                this.setState(() => ({ activity }))
+            }, 100);
 
-        this.setState(() => ({ 
-            isRunning: true,
-            activityExists: true
-            }));
+        } else {
+            this.setState(() => ({ 
+                isRunning: false
+             }))
+            clearInterval(this.timeRef);
+        }
         
-        const activity = this.state.currentActivity;
-
-        this.timeRef = setInterval(() => {
-            activity.time += 100;
-            this.setState(() => ({ activity }))
-        }, 100);
-        
-    };
-
-    onStop = () => {
-        this.setState(() => ({ 
-            isRunning: false
-         }))
-        clearInterval(this.timeRef);
     };
     
     onSave = () => {
@@ -179,8 +180,7 @@ class CalorieStopwatch extends React.Component {
         path === '/' ? 
         <StopwatchPage 
         state={this.state}
-        onStart={this.onStart}
-        onStop={this.onStop}
+        onStartStop={this.onStartStop}
         onSave={this.onSave}
         onReset={this.onReset}
         onRemoveItem={this.onRemoveItem}
