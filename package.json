@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "build:prod": "webpack-cli --mode production --env production",
-    "start": "webpack-dev-server --mode development --open"
+    "build:dev": "webpack-dev-server --mode development --open",
+    "start": "node server/server.js",
+    "heroku-postbuild": "yarn run build:prod"
   },
   "devDependencies": {
     "webpack": "^4.3.0",
